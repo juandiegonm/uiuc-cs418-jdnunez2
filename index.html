@@ -27,18 +27,20 @@ var vs = `#version 300 es
 
 in vec3 aVertexPosition;
 in vec3 aVertexNormal;
-in vec2 aTexCoord;
+// in vec2 aTexCoord;
 
 uniform mat4 uModelViewMatrix;
 uniform mat3 uNormalMatrix;
 uniform mat4 uProjectionMatrix;
 
-// out vec2 vTexCoord;
-// out vec2 vTexCoord2;
+out vec2 vTexCoord;
+out vec2 vTexCoord2;
 out vec3 vNormal;
 out vec3 n,l,v;
 
 void main() {
+
+  // vTexCoord = aTexCoord;
 
   n = normalize(uNormalMatrix*aVertexNormal);
   l = normalize(uNormalMatrix*vec3(1.0,0.25,0.0));
@@ -265,12 +267,12 @@ function loadshaders(vertexShaderSource,fragmentShaderSource) {
 
   vert_pos_attr = gl.getAttribLocation(shaderProgram, "aVertexPosition");
   vert_normal_attr = gl.getAttribLocation(shaderProgram, "aVertexNormal");
-  vert_texcoord_attr = gl.getAttribLocation(shaderProgram, "aTexCoord");
   modelview_uniform = gl.getUniformLocation(shaderProgram, "uModelViewMatrix"); 
   normal_uniform = gl.getUniformLocation(shaderProgram, "uNormalMatrix"); 
   projection_uniform = gl.getUniformLocation(shaderProgram, "uProjectionMatrix"); 
   sampler_uniform = gl.getUniformLocation(shaderProgram, "uSampler"); 
   sampler2_uniform = gl.getUniformLocation(shaderProgram, "uSampler2"); 
+  vert_texcoord_attr = gl.getAttribLocation(shaderProgram, "aTexCoord");
 }
 
 //
