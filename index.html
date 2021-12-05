@@ -33,8 +33,8 @@ uniform mat4 uModelViewMatrix;
 uniform mat3 uNormalMatrix;
 uniform mat4 uProjectionMatrix;
 
-out vec2 vTexCoord;
-out vec2 vTexCoord2;
+// out vec2 vTexCoord;
+// out vec2 vTexCoord2;
 out vec3 vNormal;
 out vec3 n,l,v;
 
@@ -61,7 +61,7 @@ precision mediump float;
 float PI = 3.1415926535897932384626433832795;
     
 in vec3 vNormal;
-in vec3 vertexPosition
+in vec3 aVertexPosition
 uniform sampler2D uSampler;
 uniform sampler2D uSampler2;
 
@@ -74,14 +74,14 @@ in vec2 vTexCoord3;
     
 void main() {
 
-  vTexCoord.s = atan(vertexPosition.z, -vertexPosition.x) / (2.0 * PI);
-  vTexCoord.t = 2.0 * (vertexPosition.y) + 0.54;
+  vTexCoord.s = atan(aVertexPosition.z, -aVertexPosition.x) / (2.0 * PI);
+  vTexCoord.t = 2.0 * (aVertexPosition.y) + 0.65;
 
   vTexCoord2.s = (n.x + 1.0) / 2.0;
   vTexCoord2.t = (n.y + 1.0) / 2.0;
   
-  //vTexCoord3.s = atan(vertexPosition.z, -vertexPosition.x) / (2.0 * PI);
-  //vTexCoord3.t = 2.0 * (vertexPosition.y) + 0.54;
+  // vTexCoord3.s = atan(aVertexPosition.z, -aVertexPosition.x) / (2.0 * PI);
+  // vTexCoord3.t = 2.0 * (aVertexPosition.y) + 0.54;
 
   vec3 ambientColor = vec3(1.0, 1.0, 1.0);
   vec3 diffColor = vec3(1.0, 1.0, 1.0);
